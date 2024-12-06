@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		終極密碼
+	</title>
+
+</head>
+<body>
+	<div id="result">
+		www
+
+	</div>
+	<script>
+		var ans = Math.floor(Math.random()*100);
+		var count=7;
+		var max=100;
+		var min=1;
+		var result = document.getElementById("result");
+
+		do {
+    	ans = Math.floor(Math.random() * 100);
+  			} while (ans == 0);
+		
+		for(let i=0;i<count;i++){
+			var num1 = parseInt(window.prompt('請輸入'+min+'-'+max+'之間的數\n還剩'+(count-i)+'次機會'));
+			do{	if(num1>=max||num1<=min){
+				alert('輸入有效範圍的數字好不好!');
+				num1= parseInt(window.prompt('請輸入'+min+'-'+max+'之間的數\n還剩'+(count-i)+'次機會'));}
+
+			}while (num1>=max||num1<=min);
+			do{	if(isNaN(num1)){
+				alert('輸個數字行不!');
+				num1= parseInt(window.prompt('請輸入'+min+'-'+max+'之間的數\n還剩'+(count-i)+'次機會'));}
+				
+			}while (isNaN(num1));
+			if(ans>num1){
+				min=num1;}
+			else if(ans<num1){
+				max=num1;}
+			else if(num1==ans){
+				alert('成功');
+				   result.innerHTML = "<img src='correct.jpg'><br>ans:" + ans;
+					break;
+				}
+		}
+		if (num1!=ans) {
+            alert('遊戲結束，答案是：'+ans);
+				 result.innerHTML = "<img src='wrong.jpg'><br>ans:" + ans;
+        }
+            
+	</script>
+	
+		
+
+</body>
+</html>
